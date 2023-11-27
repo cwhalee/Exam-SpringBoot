@@ -1,10 +1,12 @@
 package com.example.springboot.learnspringboot.todo;
 
-import java.time.LocalDate;
+import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
 public class Todo {
     private int id;
     private String username;
+    @Size(min=10, message = "short")
     private String description;
     private LocalDate targetDate;
     private boolean done;

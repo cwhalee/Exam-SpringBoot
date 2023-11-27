@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="webjars/bootstrap/5.1.3/css/bootstrap.min-jsf.css" rel="stylesheet">
     <title>List</title>
 </head>
 <body>
-<div>List ${name}</div>
-<hr>
-<h1>Tour Todos</h1>
-    <table>
+<div class="container">
+    <h1>Tour Todos</h1>
+    <table class="table">
         <thead>
             <th>id</th>
             <th>Description</th>
@@ -26,5 +26,9 @@
             </c:forEach>
         </tbody>
     </table>
+    <a href="add-todo" class="btn btn-success">Add Todo</a>
+</div>
+    <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

@@ -17,11 +17,14 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '10.1.16'
 	implementation group: 'jakarta.servlet.jsp.jstl', name: 'jakarta.servlet.jsp.jstl-api', version: '3.0.0'
 	implementation group: 'org.eclipse.jetty', name: 'glassfish-jstl', version: '11.0.18'
+	implementation group: 'org.webjars', name: 'bootstrap', version:'5.1.3'
+	implementation group: 'org.webjars' , name: 'jquery', version: '3.6.0'
 }
 
 tasks.named('test') {
