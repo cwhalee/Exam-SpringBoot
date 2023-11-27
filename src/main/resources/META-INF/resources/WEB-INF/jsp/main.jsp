@@ -4,7 +4,8 @@
     <title>Main Page</title>
 </head>
 <body>
-<div>Welcome to the Main</div>
-<div>${name}</div>
+    <div>${name}</div>
+    <hr>
+    <div><a href="list-todos">Manage</a>todos</div>
 </body>
 </html>

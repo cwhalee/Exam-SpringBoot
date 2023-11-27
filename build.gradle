@@ -20,6 +20,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '10.1.16'
+	implementation group: 'jakarta.servlet.jsp.jstl', name: 'jakarta.servlet.jsp.jstl-api', version: '3.0.0'
+	implementation group: 'org.eclipse.jetty', name: 'glassfish-jstl', version: '11.0.18'
 }
 
 tasks.named('test') {
