@@ -2,9 +2,9 @@ package com.example.springboot.learnspringboot.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,6 +13,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.function.Function;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -47,17 +49,33 @@ public class SpringSecurityConfiguration {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+/**
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeHttpRequests(
+                auth -> auth.anyRequest().authenticated());
+        httpSecurity.formLogin(withDefaults());
 
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-//        httpSecurity.authorizeHttpRequests(
-//                auth -> auth.anyRequest().authenticated());
-//        httpSecurity.formLogin(Customizer.withDefaults());
-//
-//        httpSecurity.csrf(AbstractHttpConfigurer::disable);
-//        httpSecurity.headers().frameOptions().disable();
-//
-//        return httpSecurity.build();
-//    }
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.headers().frameOptions().disable();
+
+        return httpSecurity.build();
+    }
+*/
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http.authorizeHttpRequests(
+                auth -> auth.anyRequest().authenticated());
+        http.formLogin(withDefaults());
+
+        http.csrf(csrf -> csrf.disable());
+        // OR
+        // http.csrf(AbstractHttpConfigurer::disable);
+
+        http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)); // Starting from SB 3.1.x
+
+        return http.build();
+    }
 
 }
